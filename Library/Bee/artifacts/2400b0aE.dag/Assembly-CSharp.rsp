@@ -350,6 +350,7 @@
 -r:"Library/Bee/artifacts/2400b0aE.dag/UnityEngine.UI.ref.dll"
 -analyzer:"/home/lilyan/Unity/Hub/Editor/2022.3.13f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.Properties.SourceGenerator.dll"
 -analyzer:"/home/lilyan/Unity/Hub/Editor/2022.3.13f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.SourceGenerators.dll"
+"Assets/Scripts/ItemPickup.cs"
 "Assets/Scripts/MainMenu.cs"
 "Assets/Scripts/PauseMenu.cs"
 "Assets/Scripts/PlayerController.cs"

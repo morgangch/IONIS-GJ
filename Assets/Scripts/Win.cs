@@ -8,7 +8,7 @@ public class Win : MonoBehaviour
     public GameObject pauseMenuUI;
     void Start()
     {
-        pauseMenuUI.SetActive(true);
+        pauseMenuUI.SetActive(false);
     }
     void Update()
     {

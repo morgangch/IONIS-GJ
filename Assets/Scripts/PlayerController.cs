@@ -6,16 +6,19 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public Camera playerCamera;
+    public GameObject playerHand;
 	public GameObject player;
     public float walkSpeed = 6f;
     public float runSpeed = 12f;
     public float jumpPower = 4f;
     public float gravity = 10f;
 
+    public ItemPickup itemPickup;
 
     public float lookSpeed = 2.5f;
     public float lookXLimit = 70f;
 
+    public bool HasKey { get; set; }
 
     Vector3 moveDirection = Vector3.zero;
     float rotationX = 0;
@@ -35,6 +38,8 @@ public class PlayerController : MonoBehaviour
         characterController = GetComponent<CharacterController>();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        itemPickup = GetComponent<ItemPickup>();
+        HasKey = false;
     }
 
     void Update()
