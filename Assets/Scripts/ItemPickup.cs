@@ -5,6 +5,12 @@ public class ItemPickup : MonoBehaviour
     public Transform playerHand; // Assign this in the Inspector
     public GameObject playerHead; // Assign this in the Inspector
     private GameObject currentItem;
+    private ItemPlacement itemPlacement;
+
+    void Start()
+    {
+        itemPlacement = FindObjectOfType<ItemPlacement>();
+    }
 
     void Update()
     {
@@ -36,6 +42,7 @@ public class ItemPickup : MonoBehaviour
                 currentItem.transform.localRotation = Quaternion.identity;
                 currentItem.GetComponent<Rigidbody>().isKinematic = true;
                 Debug.Log("Picked up: " + currentItem.name);
+                itemPlacement.SetCurrentItem(currentItem);
             }
         }
     }
@@ -46,5 +53,6 @@ public class ItemPickup : MonoBehaviour
         currentItem.transform.SetParent(null);
         currentItem.GetComponent<Rigidbody>().isKinematic = false;
         currentItem = null;
+        itemPlacement.SetCurrentItem(null);
     }
 }
