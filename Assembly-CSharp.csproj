@@ -68,6 +68,7 @@
     <Compile Include="Assets/Scripts/PauseMenu.cs" />
     <Compile Include="Assets/Scripts/Win.cs" />
     <Compile Include="Assets/Scripts/PlayerController.cs" />
+    <Compile Include="Assets/Scripts/ItemPlacement.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

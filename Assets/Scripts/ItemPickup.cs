@@ -5,19 +5,31 @@ public class ItemPickup : MonoBehaviour
     public Transform playerHand; // Assign this in the Inspector
     public GameObject playerHead; // Assign this in the Inspector
     private GameObject currentItem;
+    private ItemPlacement itemPlacement;
+
+    void Start()
+    {
+        itemPlacement = FindObjectOfType<ItemPlacement>();
+    }
 
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
-            Debug.Log("E key pressed");
-            if (currentItem != null)
+            if (currentItem == null)
             {
-                DropItem();
+                PickupItem();
             }
             else
             {
-                PickupItem();
+                if (itemPlacement.PlaceItem())
+                {
+                    currentItem = null;
+                }
+                else
+                {
+                    DropItem();
+                }
             }
         }
     }
@@ -27,7 +39,6 @@ public class ItemPickup : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(playerHead.transform.position, playerHead.transform.forward, out hit, 4f))
         {
-            Debug.Log("Raycast hit: " + hit.transform.name);
             if (hit.transform.CompareTag("Pickup"))
             {
                 currentItem = hit.transform.gameObject;
@@ -35,14 +46,14 @@ public class ItemPickup : MonoBehaviour
                 currentItem.transform.localPosition = Vector3.zero;
                 currentItem.transform.localRotation = Quaternion.identity;
                 currentItem.GetComponent<Rigidbody>().isKinematic = true;
-                Debug.Log("Picked up: " + currentItem.name);
+                currentItem.GetComponent<Rigidbody>().useGravity = true;
+                itemPlacement.SetCurrentItem(currentItem);
             }
         }
     }
 
-    void DropItem()
+    public void DropItem()
     {
-        Debug.Log("Dropped: " + currentItem.name);
         currentItem.transform.SetParent(null);
         currentItem.GetComponent<Rigidbody>().isKinematic = false;
         currentItem = null;
