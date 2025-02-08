@@ -51,5 +51,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "Jam_Ionis.sln"
+    "dotnet.defaultSolution": "IONIS-GJ.sln"
 }
