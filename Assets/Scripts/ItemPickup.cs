@@ -45,7 +45,7 @@ public class ItemPickup : MonoBehaviour
                 // If the item was placed, decrement the counter using itemPlacement.enigmeChecker
                 if(targetItem.transform.parent != null && targetItem.transform.parent.CompareTag("Placement"))
                 {
-                    if(itemPlacement.enigmeChecker != null && targetItem == itemPlacement.neededobject)
+                    if(itemPlacement.enigmeChecker != null && itemPlacement.IsGoodItem(targetItem.transform.parent.name, targetItem.name))
                     {
                         itemPlacement.enigmeChecker.DecrementCurrent();
                     }
