@@ -3,8 +3,9 @@ using UnityEngine;
 public class ItemPlacement : MonoBehaviour
 {
     public string requiredItemTag = "Pickup"; // Tag of the item that can be placed
-    public GameObject actionObject; // Object to trigger an action on
+    public GameObject neededobject; // Object to trigger an action on
     public GameObject playerHead; // Assign this in the Inspector for raycasting
+    public EnigmeChecker enigmeChecker; // Add this field
 
     private GameObject currentItem;
     public float placementRayDistance = 4f; // Maximum distance for detecting a placement
@@ -25,20 +26,17 @@ public class ItemPlacement : MonoBehaviour
                 currentItem.transform.rotation = hit.transform.rotation;
                 currentItem.GetComponent<Rigidbody>().isKinematic = false;
                 currentItem.GetComponent<Rigidbody>().useGravity = false;
-                TriggerAction(hit.transform);
+                // Use the public enigmeChecker instead of FindObjectOfType
+                if(enigmeChecker != null && currentItem == neededobject)
+                {
+                    enigmeChecker.IncrementCurrent();
+                }
+                Debug.Log("Current item = " + currentItem + " needed object = " + neededobject);
                 currentItem = null;
                 return true;
             }
         }
         return false;
-    }
-
-    void TriggerAction(Transform target)
-    {
-        if (actionObject != null)
-        {
-            actionObject.SetActive(true);
-        }
     }
 
     public void SetCurrentItem(GameObject item)

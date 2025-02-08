@@ -41,7 +41,17 @@ public class ItemPickup : MonoBehaviour
         {
             if (hit.transform.CompareTag("Pickup"))
             {
-                currentItem = hit.transform.gameObject;
+                GameObject targetItem = hit.transform.gameObject;
+                // If the item was placed, decrement the counter using itemPlacement.enigmeChecker
+                if(targetItem.transform.parent != null && targetItem.transform.parent.CompareTag("Placement"))
+                {
+                    if(itemPlacement.enigmeChecker != null && targetItem == itemPlacement.neededobject)
+                    {
+                        itemPlacement.enigmeChecker.DecrementCurrent();
+                    }
+                    targetItem.transform.SetParent(null);
+                }
+                currentItem = targetItem;
                 currentItem.transform.SetParent(playerHand);
                 currentItem.transform.localPosition = Vector3.zero;
                 currentItem.transform.localRotation = Quaternion.identity;
