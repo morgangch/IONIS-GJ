@@ -27,6 +27,7 @@ public class PlayerController : MonoBehaviour
     float rotationX = 0;
 
     public bool canMove = true;
+    public LightController lightController;
 
     
     CharacterController characterController;
@@ -43,6 +44,7 @@ public class PlayerController : MonoBehaviour
         Cursor.visible = false;
         itemPickup = GetComponent<ItemPickup>();
         doorController = GetComponent<DoorController>();
+        lightController = GetComponent<LightController>();
         HasKey = false;
     }
 
@@ -119,5 +121,7 @@ public class PlayerController : MonoBehaviour
             itemPickup.SetCurrentItem(null);
         } else if (itemPickup.GetCurrentItem())
             itemPickup.DropItem();
+        else if (hit.transform.gameObject.CompareTag("Switch"))
+            lightController.ToggleLightWithend(hit.transform.gameObject.name);
     }
 }
