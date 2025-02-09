@@ -34,7 +34,8 @@ public class ItemPlacement : MonoBehaviour
         currentItem.transform.rotation = hit.transform.rotation * Quaternion.Euler(0, 180, 0);
         // currentItem.GetComponent<Rigidbody>().isKinematic = false;
         currentItem.GetComponent<Rigidbody>().useGravity = false;
-        currentItem.GetComponent<MeshCollider>().enabled = true;
+        if (currentItem.GetComponent<Collider>() != null)
+            currentItem.GetComponent<Collider>().enabled = true;
         if(enigmeChecker != null && IsGoodItem(hit.transform.name, currentItem.name))
         {
             enigmeChecker.IncrementCurrent();

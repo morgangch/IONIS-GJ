@@ -45,7 +45,8 @@ public class ItemPickup : MonoBehaviour
         currentItem.transform.localRotation = Quaternion.Euler(0, 180, 0);
         currentItem.GetComponent<Rigidbody>().isKinematic = true;
         currentItem.GetComponent<Rigidbody>().useGravity = true;
-        currentItem.GetComponent<MeshCollider>().enabled = false;
+        if (currentItem.GetComponent<Collider>() != null)
+            currentItem.GetComponent<Collider>().enabled = false;
         if (itemPlacement)
             itemPlacement.SetCurrentItem(currentItem);
 }
@@ -55,7 +56,8 @@ public class ItemPickup : MonoBehaviour
         currentItem.transform.SetParent(null);
         currentItem.GetComponent<Rigidbody>().isKinematic = false;
         currentItem.GetComponent<Rigidbody>().useGravity = true;
-        currentItem.GetComponent<MeshCollider>().enabled = true;
+        if (currentItem.GetComponent<Collider>() != null)
+            currentItem.GetComponent<Collider>().enabled = true;
         currentItem = null;
     }
 }
