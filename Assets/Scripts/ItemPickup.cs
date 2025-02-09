@@ -42,7 +42,7 @@ public class ItemPickup : MonoBehaviour
         currentItem = targetItem;
         currentItem.transform.SetParent(playerHand);
         currentItem.transform.localPosition = Vector3.zero;
-        currentItem.transform.localRotation = Quaternion.identity;
+        currentItem.transform.localRotation = Quaternion.Euler(0, 180, 0);
         currentItem.GetComponent<Rigidbody>().isKinematic = true;
         currentItem.GetComponent<Rigidbody>().useGravity = true;
         currentItem.GetComponent<MeshCollider>().enabled = false;

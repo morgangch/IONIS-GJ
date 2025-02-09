@@ -29,8 +29,9 @@ public class ItemPlacement : MonoBehaviour
             return;
         }
         currentItem.transform.SetParent(hit.transform);
-        currentItem.transform.position = hit.transform.position;
-        currentItem.transform.rotation = hit.transform.rotation;
+        // Place the item at the center of the placement but 3 units down
+        currentItem.transform.localPosition = new Vector3(0, -1, 0);
+        currentItem.transform.rotation = hit.transform.rotation * Quaternion.Euler(0, 180, 0);
         currentItem.GetComponent<Rigidbody>().isKinematic = false;
         currentItem.GetComponent<Rigidbody>().useGravity = false;
         currentItem.GetComponent<MeshCollider>().enabled = true;
