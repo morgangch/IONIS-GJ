@@ -102,7 +102,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2830592445322392272}
   - component: {fileID: 8761831597092969702}
+  - component: {fileID: 1667846892442963595}
   - component: {fileID: 3706163471387515461}
+  - component: {fileID: 8087899683436280200}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -119,7 +121,7 @@ Transform:
   m_GameObject: {fileID: 3487973263722983129}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.52140117, z: 0}
+  m_LocalPosition: {x: 1443.68, y: 201.38, z: -200.96}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -153,6 +155,22 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1667846892442963595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3487973263722983129}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad88dc6cef8b2942ea6825359432a8ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerHead: {fileID: 1571750582113338357}
+  doorOpenAngle: 90
+  doorCloseAngle: 0
+  smooth: 2
 --- !u!114 &3706163471387515461
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -166,16 +184,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerCamera: {fileID: 1571750582113338357}
-  playerHand: {fileID: 0}
+  playerHand: {fileID: 5554466412812282296}
   player: {fileID: 7552500268470678931}
   walkSpeed: 6
   runSpeed: 12
   jumpPower: 7
   gravity: 10
   itemPickup: {fileID: 0}
+  doorController: {fileID: 0}
   lookSpeed: 2
   lookXLimit: 80
   canMove: 1
+--- !u!114 &8087899683436280200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3487973263722983129}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85a8f0999b32306818954fd59ed2de5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerHand: {fileID: 8935270412441301332}
+  playerHead: {fileID: 191457701306206973}
 --- !u!1 &5554466412812282296
 GameObject:
   m_ObjectHideFlags: 0
@@ -202,7 +235,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.6, y: 0.5, z: 0.6}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2830592445322392272}

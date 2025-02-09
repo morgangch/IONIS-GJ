@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4465878, g: 0.4964224, b: 0.57482475, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657832, g: 0.49641222, b: 0.57481664, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2091,11 +2091,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5554466412812282296, guid: b6bb3e72a1e9204829e0075b7e141874, type: 3}
   m_PrefabInstance: {fileID: 2833149011663550083}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &1379727102 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8935270412441301332, guid: b6bb3e72a1e9204829e0075b7e141874, type: 3}
-  m_PrefabInstance: {fileID: 2833149011663550083}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1391392445
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2314,20 +2309,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3487973263722983129, guid: b6bb3e72a1e9204829e0075b7e141874, type: 3}
   m_PrefabInstance: {fileID: 2833149011663550083}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1569939688
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1569939684}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85a8f0999b32306818954fd59ed2de5c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerHand: {fileID: 1379727102}
-  playerHead: {fileID: 1581178520}
 --- !u!114 &1569939692
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2344,11 +2325,6 @@ MonoBehaviour:
   doorOpenAngle: 90
   doorCloseAngle: 0
   smooth: 2
---- !u!1 &1581178520 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 191457701306206973, guid: b6bb3e72a1e9204829e0075b7e141874, type: 3}
-  m_PrefabInstance: {fileID: 2833149011663550083}
-  m_PrefabAsset: {fileID: 0}
 --- !u!20 &1581178522 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 1571750582113338357, guid: b6bb3e72a1e9204829e0075b7e141874, type: 3}
@@ -3315,9 +3291,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3487973263722983129, guid: b6bb3e72a1e9204829e0075b7e141874, type: 3}
       insertIndex: 2
       addedObject: {fileID: 1569939692}
-    - targetCorrespondingSourceObject: {fileID: 3487973263722983129, guid: b6bb3e72a1e9204829e0075b7e141874, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1569939688}
   m_SourcePrefab: {fileID: 100100000, guid: b6bb3e72a1e9204829e0075b7e141874, type: 3}
 --- !u!1001 &5044191593201671148
 PrefabInstance:

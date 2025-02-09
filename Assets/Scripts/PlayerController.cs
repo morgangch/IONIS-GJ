@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(CharacterController))]
 public class PlayerController : MonoBehaviour
@@ -100,6 +101,8 @@ public class PlayerController : MonoBehaviour
             }
             else if (itemPickup.GetCurrentItem())
                 itemPickup.DropItem();
+        } else if (Input.GetKeyDown(KeyCode.F12)) {
+            SceneManager.LoadScene("Test_Scene");
         }
         if (doorController && doorController.GetCurrentDoor())
             doorController.HandleDoor();
