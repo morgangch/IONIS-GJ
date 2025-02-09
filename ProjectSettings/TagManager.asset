@@ -8,6 +8,8 @@ TagManager:
   - placement
   - Placement
   - Door
+  - Switch
+  - switchable
   layers:
   - Default
   - TransparentFX
