@@ -63,7 +63,7 @@ public class PlayerController : MonoBehaviour
 			isRunning = false;
 			player.transform.localScale = new Vector3(1, 0.8f, 1);
 		} else
-			player.transform.localScale = new Vector3(1, 1.3f, 1);
+			player.transform.localScale = new Vector3(1, 1.6f, 1);
         float curSpeedX = canMove ? (isRunning ? runSpeed : walkSpeed) * Input.GetAxis("Vertical") : 0;
         float curSpeedY = canMove ? (isRunning ? runSpeed : walkSpeed) * Input.GetAxis("Horizontal") : 0;
         float movementDirectionY = moveDirection.y;

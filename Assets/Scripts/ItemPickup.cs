@@ -45,6 +45,7 @@ public class ItemPickup : MonoBehaviour
         currentItem.transform.localRotation = Quaternion.identity;
         currentItem.GetComponent<Rigidbody>().isKinematic = true;
         currentItem.GetComponent<Rigidbody>().useGravity = true;
+        currentItem.GetComponent<MeshCollider>().enabled = false;
         if (itemPlacement)
             itemPlacement.SetCurrentItem(currentItem);
 }
@@ -53,6 +54,8 @@ public class ItemPickup : MonoBehaviour
     {
         currentItem.transform.SetParent(null);
         currentItem.GetComponent<Rigidbody>().isKinematic = false;
+        currentItem.GetComponent<Rigidbody>().useGravity = true;
+        currentItem.GetComponent<MeshCollider>().enabled = true;
         currentItem = null;
     }
 }
