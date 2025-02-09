@@ -32,7 +32,7 @@ public class ItemPlacement : MonoBehaviour
         // Place the item at the center of the placement but 3 units down
         currentItem.transform.localPosition = new Vector3(0, -1, 0);
         currentItem.transform.rotation = hit.transform.rotation * Quaternion.Euler(0, 180, 0);
-        currentItem.GetComponent<Rigidbody>().isKinematic = false;
+        // currentItem.GetComponent<Rigidbody>().isKinematic = false;
         currentItem.GetComponent<Rigidbody>().useGravity = false;
         currentItem.GetComponent<MeshCollider>().enabled = true;
         if(enigmeChecker != null && IsGoodItem(hit.transform.name, currentItem.name))
