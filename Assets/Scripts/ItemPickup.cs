@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ItemPickup : MonoBehaviour
 {
@@ -12,55 +13,41 @@ public class ItemPickup : MonoBehaviour
         itemPlacement = FindObjectOfType<ItemPlacement>();
     }
 
-    void Update()
+    public GameObject GetCurrentItem()
     {
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            if (currentItem == null)
-            {
-                PickupItem();
-            }
-            else
-            {
-                if (itemPlacement.PlaceItem())
-                {
-                    currentItem = null;
-                }
-                else
-                {
-                    DropItem();
-                }
-            }
-        }
+        return currentItem;
     }
 
-    void PickupItem()
+    public void SetCurrentItem(GameObject item)
     {
-        RaycastHit hit;
-        if (Physics.Raycast(playerHead.transform.position, playerHead.transform.forward, out hit, 4f))
-        {
-            if (hit.transform.CompareTag("Pickup"))
-            {
-                GameObject targetItem = hit.transform.gameObject;
-                // If the item was placed, decrement the counter using itemPlacement.enigmeChecker
-                if(targetItem.transform.parent != null && targetItem.transform.parent.CompareTag("Placement"))
-                {
-                    if(itemPlacement.enigmeChecker != null && itemPlacement.IsGoodItem(targetItem.transform.parent.name, targetItem.name))
-                    {
-                        itemPlacement.enigmeChecker.DecrementCurrent();
-                    }
-                    targetItem.transform.SetParent(null);
-                }
-                currentItem = targetItem;
-                currentItem.transform.SetParent(playerHand);
-                currentItem.transform.localPosition = Vector3.zero;
-                currentItem.transform.localRotation = Quaternion.identity;
-                currentItem.GetComponent<Rigidbody>().isKinematic = true;
-                currentItem.GetComponent<Rigidbody>().useGravity = true;
-                itemPlacement.SetCurrentItem(currentItem);
-            }
-        }
+        currentItem = item;
     }
+
+    public ItemPlacement GetItemPlacement()
+    {
+        return itemPlacement;
+    }
+
+    public void PickupItem(RaycastHit hit)
+    {
+        GameObject targetItem = hit.transform.gameObject;
+        if(targetItem.transform.parent != null && targetItem.transform.parent.CompareTag("Placement"))
+        {
+            if(itemPlacement.enigmeChecker != null && itemPlacement.IsGoodItem(targetItem.transform.parent.name, targetItem.name))
+            {
+                itemPlacement.enigmeChecker.DecrementCurrent();
+            }
+            targetItem.transform.SetParent(null);
+        }
+        currentItem = targetItem;
+        currentItem.transform.SetParent(playerHand);
+        currentItem.transform.localPosition = Vector3.zero;
+        currentItem.transform.localRotation = Quaternion.identity;
+        currentItem.GetComponent<Rigidbody>().isKinematic = true;
+        currentItem.GetComponent<Rigidbody>().useGravity = true;
+        if (itemPlacement)
+            itemPlacement.SetCurrentItem(currentItem);
+}
 
     public void DropItem()
     {

@@ -10,22 +10,21 @@ public class DoorController : MonoBehaviour
     private bool isOpening = false; // État de la porte
     private GameObject currentDoor = null;
 
-    void Update()
+    public void OpenCloseDoor(RaycastHit hit)
     {
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            RaycastHit hit;
-            if (Physics.Raycast(playerHead.transform.position, playerHead.transform.forward, out hit, 4f))
-            {
-                if (hit.transform.CompareTag("Door"))
-                {
-                    currentDoor = hit.transform.parent.gameObject; // Récupérer l'objet parent (la vraie porte)
-                    isOpening = !isOpening; // Inverser l'état de la porte
-                }
-            }
-        }
+        currentDoor = hit.transform.parent.gameObject; // Récupérer l'objet parent (la vraie porte)
+        isOpening = !isOpening; // Inverser l'état de la porte
 
-        if (currentDoor != null)
+    }
+
+    public GameObject GetCurrentDoor()
+    {
+        return currentDoor;
+    }
+
+    public void HandleDoor()
+    {
+        if (currentDoor)
         {
             // Définir l'angle cible
             float targetAngle = isOpening ? doorOpenAngle : doorCloseAngle;

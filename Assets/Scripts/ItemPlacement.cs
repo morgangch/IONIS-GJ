@@ -14,7 +14,6 @@ public class ItemPlacement : MonoBehaviour
 
     private string extractItemSuffix(string item_name)
     {
-        Debug.Log("neededobject_name = " + item_name + " neededobject_name.Length = " + item_name.Length);
         return (item_name[item_name.Length - 2].ToString() + item_name[item_name.Length - 1].ToString());
     }
 
@@ -23,33 +22,22 @@ public class ItemPlacement : MonoBehaviour
         return extractItemSuffix(PlacementName) == (extractItemSuffix(ItemName));
     }
 
-    public bool PlaceItem()
+    public void PlaceItem(RaycastHit hit)
     {
-        RaycastHit hit;
-        if (Physics.Raycast(playerHead.transform.position, playerHead.transform.forward, out hit, placementRayDistance))
+        if(hit.transform.childCount > 0)
         {
-            if(hit.transform.CompareTag("Placement") && currentItem != null && currentItem.CompareTag(requiredItemTag))
-            {
-                if(hit.transform.childCount > 0)
-                {
-                    return false;
-                }
-                currentItem.transform.SetParent(hit.transform);
-                currentItem.transform.position = hit.transform.position;
-                currentItem.transform.rotation = hit.transform.rotation;
-                currentItem.GetComponent<Rigidbody>().isKinematic = false;
-                currentItem.GetComponent<Rigidbody>().useGravity = false;
-                // Use the public enigmeChecker instead of FindObjectOfType
-                if(enigmeChecker != null && IsGoodItem(hit.transform.name, currentItem.name))
-                {
-                    enigmeChecker.IncrementCurrent();
-                }
-                Debug.Log("Current item = " + currentItem + " needed object = " + currentItem.name);
-                currentItem = null;
-                return true;
-            }
+            return;
         }
-        return false;
+        currentItem.transform.SetParent(hit.transform);
+        currentItem.transform.position = hit.transform.position;
+        currentItem.transform.rotation = hit.transform.rotation;
+        currentItem.GetComponent<Rigidbody>().isKinematic = false;
+        currentItem.GetComponent<Rigidbody>().useGravity = false;
+        if(enigmeChecker != null && IsGoodItem(hit.transform.name, currentItem.name))
+        {
+            enigmeChecker.IncrementCurrent();
+        }
+        currentItem = null;
     }
 
     public void SetCurrentItem(GameObject item)

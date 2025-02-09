@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,6 +15,7 @@ public class PlayerController : MonoBehaviour
     public float gravity = 10f;
 
     public ItemPickup itemPickup;
+    public DoorController doorController;
 
     public float lookSpeed = 2.5f;
     public float lookXLimit = 70f;
@@ -39,16 +41,16 @@ public class PlayerController : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         itemPickup = GetComponent<ItemPickup>();
+        doorController = GetComponent<DoorController>();
         HasKey = false;
     }
 
     void Update()
     {
-		if (PlayerPrefs.GetInt("gameIsPaused") == 1) {
+		if (PlayerPrefs.GetInt("gameIsPaused") == 1)
 			canMove = false;
-		} else {
+		else
 			canMove = true;
-		}
         #region Handles Movment
         Vector3 forward = transform.TransformDirection(Vector3.forward);
         Vector3 right = transform.TransformDirection(Vector3.right);
@@ -59,9 +61,8 @@ public class PlayerController : MonoBehaviour
 		if (isCrouching) {
 			isRunning = false;
 			player.transform.localScale = new Vector3(1, 0.8f, 1);
-		} else {
+		} else
 			player.transform.localScale = new Vector3(1, 1.3f, 1);
-		}
         float curSpeedX = canMove ? (isRunning ? runSpeed : walkSpeed) * Input.GetAxis("Vertical") : 0;
         float curSpeedY = canMove ? (isRunning ? runSpeed : walkSpeed) * Input.GetAxis("Horizontal") : 0;
         float movementDirectionY = moveDirection.y;
@@ -71,18 +72,12 @@ public class PlayerController : MonoBehaviour
 
         #region Handles Jumping
         if (Input.GetButton("Jump") && canMove && characterController.isGrounded)
-        {
             moveDirection.y = jumpPower;
-        }
         else
-        {
             moveDirection.y = movementDirectionY;
-        }
 
         if (!characterController.isGrounded)
-        {
             moveDirection.y -= gravity * Time.deltaTime;
-        }
 
         #endregion
 
@@ -96,7 +91,30 @@ public class PlayerController : MonoBehaviour
             playerCamera.transform.localRotation = Quaternion.Euler(rotationX, 0, 0);
             transform.rotation *= Quaternion.Euler(0, Input.GetAxis("Mouse X") * lookSpeed, 0);
         }
-
         #endregion
+        
+        if (Input.GetKeyDown(KeyCode.E)) {
+            RaycastHit hit;
+            if (Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out hit, 4f)) {
+                ControllerColliderHit(hit);
+            }
+            else if (itemPickup.GetCurrentItem())
+                itemPickup.DropItem();
+        }
+        if (doorController && doorController.GetCurrentDoor())
+            doorController.HandleDoor();
+    }
+
+    private void ControllerColliderHit(RaycastHit hit)
+    {
+        if (hit.transform.gameObject.CompareTag("Door"))
+            doorController.OpenCloseDoor(hit);
+        else if (hit.transform.gameObject.CompareTag("Pickup") && !itemPickup.GetCurrentItem())    
+            itemPickup.PickupItem(hit);
+        else if (hit.transform.gameObject.CompareTag("Placement") && itemPickup.GetCurrentItem()) {
+            itemPickup.GetItemPlacement().PlaceItem(hit);
+            itemPickup.SetCurrentItem(null);
+        } else if (itemPickup.GetCurrentItem())
+            itemPickup.DropItem();
     }
 }
