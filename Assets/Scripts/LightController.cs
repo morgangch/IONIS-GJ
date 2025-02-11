@@ -21,7 +21,7 @@ public class LightController : MonoBehaviour
         return extractItemSuffix(PlacementName) == (extractItemSuffix(ItemName));
     }
 
-    public void ToggleLightWithend(string SwitchName)
+    public void ToggleLightWithend(string SwitchName, GameObject SwitchObject)
     {
         for (int i = 0; i < controlledLights.Length; i++)
         {
@@ -30,6 +30,7 @@ public class LightController : MonoBehaviour
                 controlledLights[i].enabled = !controlledLights[i].enabled;
             }
         }
+        SwitchObject.transform.Rotate(0f, 0f, 180f);
     }
 
     // Toggle all lights when index is -1, otherwise toggle the specific light by index.

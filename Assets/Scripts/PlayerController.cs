@@ -126,6 +126,6 @@ public class PlayerController : MonoBehaviour
         } else if (itemPickup.GetCurrentItem())
             itemPickup.DropItem();
         else if (hit.transform.gameObject.CompareTag("Switch"))
-            lightController.ToggleLightWithend(hit.transform.gameObject.name);
+            lightController.ToggleLightWithend(hit.transform.gameObject.name, hit.transform.gameObject);
     }
 }
