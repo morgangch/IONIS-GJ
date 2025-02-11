@@ -6,11 +6,8 @@ public class ItemPickup : MonoBehaviour
     public Transform playerHand; // Assign this in the Inspector
     public GameObject playerHead; // Assign this in the Inspector
     private GameObject currentItem;
-    private ItemPlacement itemPlacement;
-
     void Start()
     {
-        itemPlacement = FindObjectOfType<ItemPlacement>();
     }
 
     public GameObject GetCurrentItem()
@@ -23,19 +20,14 @@ public class ItemPickup : MonoBehaviour
         currentItem = item;
     }
 
-    public ItemPlacement GetItemPlacement()
-    {
-        return itemPlacement;
-    }
-
     public void PickupItem(RaycastHit hit)
     {
         GameObject targetItem = hit.transform.gameObject;
         if(targetItem.transform.parent != null && targetItem.transform.parent.CompareTag("Placement"))
         {
-            if(itemPlacement.enigmeChecker != null && itemPlacement.IsGoodItem(targetItem.transform.parent.name, targetItem.name))
+            if(hit.transform.parent.GetComponent<ItemPlacement>().enigmeChecker != null && hit.transform.parent.GetComponent<ItemPlacement>().IsGoodItem(targetItem.transform.parent.name, targetItem.name))
             {
-                itemPlacement.enigmeChecker.DecrementCurrent();
+                hit.transform.parent.GetComponent<ItemPlacement>().enigmeChecker.DecrementCurrent();
             }
             targetItem.transform.SetParent(null);
         }
@@ -47,8 +39,8 @@ public class ItemPickup : MonoBehaviour
         currentItem.GetComponent<Rigidbody>().useGravity = true;
         if (currentItem.GetComponent<Collider>() != null)
             currentItem.GetComponent<Collider>().enabled = false;
-        if (itemPlacement)
-            itemPlacement.SetCurrentItem(currentItem);
+        if (hit.transform.parent.GetComponent<ItemPlacement>())
+            hit.transform.parent.GetComponent<ItemPlacement>().SetCurrentItem(currentItem);
 }
 
     public void DropItem()

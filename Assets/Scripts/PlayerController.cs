@@ -112,13 +112,17 @@ public class PlayerController : MonoBehaviour
 
     private void ControllerColliderHit(RaycastHit hit)
     {
+        
         if (hit.transform.gameObject.CompareTag("Door"))
             doorController.OpenCloseDoor(hit);
         else if (hit.transform.gameObject.CompareTag("Pickup") && !itemPickup.GetCurrentItem())    
             itemPickup.PickupItem(hit);
         else if (hit.transform.gameObject.CompareTag("Placement") && itemPickup.GetCurrentItem()) {
-            itemPickup.GetItemPlacement().PlaceItem(hit);
-            itemPickup.SetCurrentItem(null);
+            if (hit.transform.childCount == 0) {
+                hit.transform.GetComponent<ItemPlacement>().SetCurrentItem(itemPickup.GetCurrentItem());
+                hit.transform.GetComponent<ItemPlacement>().PlaceItem(hit);
+                itemPickup.SetCurrentItem(null);
+            }
         } else if (itemPickup.GetCurrentItem())
             itemPickup.DropItem();
         else if (hit.transform.gameObject.CompareTag("Switch"))
