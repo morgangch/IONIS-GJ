@@ -980,6 +980,7 @@ GameObject:
   - component: {fileID: 278707642}
   - component: {fileID: 278707641}
   - component: {fileID: 278707644}
+  - component: {fileID: 278707645}
   m_Layer: 0
   m_Name: hitbox_po
   m_TagString: Placement
@@ -1074,6 +1075,22 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 0.1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &278707645
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 278707639}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: daf2837e5bc3c8989a4eaca165d642f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  requiredItemTag: Pickup
+  playerHead: {fileID: 1468254081}
+  enigmeChecker: {fileID: 450974519}
+  placementRayDistance: 4
 --- !u!1 &281961529
 GameObject:
   m_ObjectHideFlags: 0
@@ -2294,7 +2311,7 @@ GameObject:
   - component: {fileID: 450974520}
   - component: {fileID: 450974519}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: First enigm checker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2314,7 +2331,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   current: 0
   needed: 5
-  SceneName: 
+  SceneName: Test_scene
   Door: {fileID: 0}
 --- !u!4 &450974520
 Transform:
@@ -5053,6 +5070,7 @@ GameObject:
   - component: {fileID: 832030217}
   - component: {fileID: 832030216}
   - component: {fileID: 832030219}
+  - component: {fileID: 832030220}
   m_Layer: 0
   m_Name: hitbox_ki
   m_TagString: Placement
@@ -5146,6 +5164,22 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 0.1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &832030220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 832030214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: daf2837e5bc3c8989a4eaca165d642f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  requiredItemTag: Pickup
+  playerHead: {fileID: 1468254081}
+  enigmeChecker: {fileID: 450974519}
+  placementRayDistance: 4
 --- !u!4 &833771134 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 332fc725499168f9f92d867c4be894d0, type: 3}
@@ -5257,6 +5291,7 @@ GameObject:
   - component: {fileID: 854490586}
   - component: {fileID: 854490585}
   - component: {fileID: 854490588}
+  - component: {fileID: 854490589}
   m_Layer: 0
   m_Name: Hitbox_sa
   m_TagString: Placement
@@ -5350,6 +5385,22 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 0.1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &854490589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 854490583}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: daf2837e5bc3c8989a4eaca165d642f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  requiredItemTag: Pickup
+  playerHead: {fileID: 1468254081}
+  enigmeChecker: {fileID: 450974519}
+  placementRayDistance: 4
 --- !u!4 &867328640 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 332fc725499168f9f92d867c4be894d0, type: 3}
@@ -5400,6 +5451,7 @@ GameObject:
   - component: {fileID: 886548333}
   - component: {fileID: 886548332}
   - component: {fileID: 886548335}
+  - component: {fileID: 886548336}
   m_Layer: 0
   m_Name: Hitbox_ma
   m_TagString: Placement
@@ -5493,6 +5545,22 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 0.1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &886548336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 886548330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: daf2837e5bc3c8989a4eaca165d642f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  requiredItemTag: Pickup
+  playerHead: {fileID: 1468254081}
+  enigmeChecker: {fileID: 450974519}
+  placementRayDistance: 4
 --- !u!1 &904527543
 GameObject:
   m_ObjectHideFlags: 0
@@ -9451,54 +9519,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2780602746043283154, guid: 58f9d40f46d5967d0a9f6c4cd129f7ea, type: 3}
   m_PrefabInstance: {fileID: 1486906716}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1488549497
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1488549499}
-  - component: {fileID: 1488549498}
-  m_Layer: 0
-  m_Name: ItemPlacementManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1488549498
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1488549497}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: daf2837e5bc3c8989a4eaca165d642f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  requiredItemTag: Pickup
-  playerHead: {fileID: 1468254081}
-  enigmeChecker: {fileID: 450974519}
-  placementRayDistance: 4
---- !u!4 &1488549499
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1488549497}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1426.2928, y: 201.67111, z: -182.1973}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1494945740
 GameObject:
   m_ObjectHideFlags: 0
@@ -9511,6 +9531,7 @@ GameObject:
   - component: {fileID: 1494945743}
   - component: {fileID: 1494945742}
   - component: {fileID: 1494945745}
+  - component: {fileID: 1494945746}
   m_Layer: 0
   m_Name: hitbox_pa
   m_TagString: Placement
@@ -9604,6 +9625,22 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 0.1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1494945746
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1494945740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: daf2837e5bc3c8989a4eaca165d642f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  requiredItemTag: Pickup
+  playerHead: {fileID: 1468254081}
+  enigmeChecker: {fileID: 450974519}
+  placementRayDistance: 4
 --- !u!4 &1499001490 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2780602746043283154, guid: 58f9d40f46d5967d0a9f6c4cd129f7ea, type: 3}
@@ -15335,7 +15372,6 @@ SceneRoots:
   - {fileID: 285434423}
   - {fileID: 1437494144}
   - {fileID: 1092474667}
-  - {fileID: 1488549499}
   - {fileID: 450974520}
   - {fileID: 1002404032}
   - {fileID: 854490587}
