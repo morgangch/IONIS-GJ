@@ -25,9 +25,10 @@ public class ItemPickup : MonoBehaviour
         GameObject targetItem = hit.transform.gameObject;
         if(targetItem.transform.parent != null && targetItem.transform.parent.CompareTag("Placement"))
         {
-            if(hit.transform.parent.GetComponent<ItemPlacement>().enigmeChecker != null && hit.transform.parent.GetComponent<ItemPlacement>().IsGoodItem(targetItem.transform.parent.name, targetItem.name))
+            ItemPlacement placement = targetItem.transform.parent.GetComponent<ItemPlacement>();
+            if(placement.enigmeChecker != null && placement.IsGoodItem(targetItem.transform.parent.name, targetItem.name))
             {
-                hit.transform.parent.GetComponent<ItemPlacement>().enigmeChecker.DecrementCurrent();
+                placement.enigmeChecker.DecrementCurrent();
             }
             targetItem.transform.SetParent(null);
         }
